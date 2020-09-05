@@ -17,27 +17,42 @@ module.exports = function rk9supporter(dispatch) {
     let bossunderseventy = false;
     let partyc = false;
     let partys = false;
+    let toolboxChat = false;
     let partyn = true;
 
     dispatch.command.add('rk', (cmd) => {
-        if (cmd == null) {
-            enabled = !enabled
-            command.message('rk9supporter ' + (enabled ? 'enabled' : 'disabled'))
-        } else if (cmd === 'partyn') {
-            partyc = false;
-            partys = false;
-            partyn = true;
-            command.message('Messages will now be sent to notice-client-chat chat.')
-        } else if (cmd === 'partys') {
-            partyc = false;
-            partys = true;
-            partyn = true;
-            command.message('Messages will now be sent to party-server-chat chat.')
-        } else if (cmd === 'partyc') {
-            partyc = true;
-            partys = false;
-            partyn = false;
-            command.message('Messages will now be sent to party-client-chat chat.')
+        switch(cmd) {
+            case "partyn":
+                partyc = false;
+                partys = false;
+                partyn = true;
+                toolboxChat = false;
+                command.message('Messages will now be sent to notice-client-chat chat.')
+                break;
+            case "partys":
+                partyc = false;
+                partys = true;
+                partyn = true;
+                toolboxChat = false;
+                command.message('Messages will now be sent to party-server-chat chat.')
+                break;
+            case "partyc":
+                partyc = true;
+                partys = false;
+                partyn = false;
+                toolboxChat = false;
+                command.message('Messages will now be sent to party-client-chat chat.')
+                break;
+            case "tb":
+                partyc = false;
+                partys = false;
+                partyn = false;
+                toolboxChat = true;
+                command.message('Messages will now be sent to toolbox-chat chat.')
+                break;
+            default:
+                enabled = !enabled
+                command.message('rk9supporter ' + (enabled ? 'enabled' : 'disabled'))
         }
     })
 
@@ -62,7 +77,6 @@ module.exports = function rk9supporter(dispatch) {
             } else {
                 enabled = false;
                 insidemap = false;
-                bossunderseventy = false;
             }
         }, 15000);
     });
@@ -205,6 +219,10 @@ module.exports = function rk9supporter(dispatch) {
             setTimeout(function () {
                 dispatch.toServer('C_CHAT', 1, {channel: 1, message: msg});
             }, 8000);
+        }
+
+        if (toolboxChat){
+            command.message(msg)
         }
     }
 }

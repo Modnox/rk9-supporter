@@ -6,3 +6,4 @@
   - 'rk partyn': sends messages in notice-client-chat (only you can see them)
   - 'rk partyc': sends messages in party-client-chat (only you can see them)
   - 'rk partys': sends messages in party-server-chat (all party members can see them)
+  - 'rk tb': sends messages in toolbox-chat (only you can see them)
