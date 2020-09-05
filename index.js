@@ -47,15 +47,9 @@ module.exports = function rk9supporter(dispatch) {
             enabled = true;
             insidemap = true;
             command.message('<br> Welcome to RK-9<br>');
-            firstskill = null;
-            tempskill = null;
-            secondskill = null;
-            checklastboss = true;
-
         } else {
             enabled = false;
             insidemap = false;
-            bossunderseventy = false;
         }
     });
 
@@ -81,6 +75,13 @@ module.exports = function rk9supporter(dispatch) {
                     if (parseInt(event.curHp) / parseInt(event.maxHp) < 0.7) {
                         bossunderseventy = true;
                         sendMessage('Triple S-Bomb from now on.');
+                    }
+                    if (parseInt(event.curHp) / parseInt(event.maxHp) > 0.99) {
+                        firstskill = null;
+                        tempskill = null;
+                        secondskill = null;
+                        checklastboss = true;
+                        bossunderseventy = false;
                     }
                 }
             }
