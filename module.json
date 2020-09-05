@@ -1,0 +1,7 @@
+{
+	"disableAutoUpdate": false,
+	"name": "rk9-supporter",
+	"author": "Modnox",
+	"description": "Guide for RK9 dungeon",
+	"servers": ["https://raw.githubusercontent.com/Modnox/rk9-supporter/master/"]
+}
