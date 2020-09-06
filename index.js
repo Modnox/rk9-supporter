@@ -85,17 +85,17 @@ module.exports = function rk9supporter(dispatch) {
         if (event.huntingZoneId === huntingZone) {
             if (event.templateId === bossID) {
                 insidezone = true;
+                if (parseInt(event.curHp) / parseInt(event.maxHp) > 0.99) {
+                    firstskill = null;
+                    tempskill = null;
+                    secondskill = null;
+                    checklastboss = true;
+                    bossunderseventy = false;
+                }
                 if (!bossunderseventy) {
                     if (parseInt(event.curHp) / parseInt(event.maxHp) < 0.7) {
                         bossunderseventy = true;
                         sendMessage('Triple S-Bomb from now on.');
-                    }
-                    if (parseInt(event.curHp) / parseInt(event.maxHp) > 0.99) {
-                        firstskill = null;
-                        tempskill = null;
-                        secondskill = null;
-                        checklastboss = true;
-                        bossunderseventy = false;
                     }
                 }
             }
