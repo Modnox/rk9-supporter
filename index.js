@@ -218,7 +218,7 @@ module.exports = function rk9supporter(dispatch) {
         if (partys) {
             setTimeout(function () {
                 dispatch.toServer('C_CHAT', 1, {channel: 1, message: msg});
-            }, 8000);
+            }, 500);
         }
 
         if (toolboxChat){
